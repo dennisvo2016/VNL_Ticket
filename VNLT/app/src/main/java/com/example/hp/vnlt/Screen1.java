@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
@@ -22,11 +23,10 @@ import java.io.InputStreamReader;
 import java.net.URL;
 import java.net.URLConnection;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.List;
 
 /**
- * Created by HP on 4/29/2017.
+ * Created by Vo Dang Phuc on 4/29/2017.
  */
 
 public class Screen1 extends Fragment {
@@ -36,7 +36,7 @@ public class Screen1 extends Fragment {
     private Button btn_see;
     private Spinner spn_pro, spn_date;
     private TextView txt_scr1_g1, txt_scr1_g2,txt_scr1_g3,txt_scr1_g4,txt_scr1_g5,txt_scr1_g6,txt_scr1_g7,txt_scr1_g8,txt_scr1_gdb;
-    Calendar cal;
+    private JSONObject objdate;
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -47,22 +47,6 @@ public class Screen1 extends Fragment {
     }
 
     private void addEvents(){
-        //btn_show date click event
-//        btn_date1.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                showDatePickerDialog();
-//            }
-//        });
-//        cal = Calendar.getInstance();
-//        SimpleDateFormat dft = null;
-//        //Định dạng ngày / tháng /năm
-//        dft=new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault());
-//        String strDate=dft.format(cal.getTime());
-//        //hiển thị lên giao diện
-////         txt_date1.setText(strDate);
-
-        //Read JSON event
         try{
             this.getActivity().runOnUiThread(new Runnable() {
                 @Override
@@ -81,22 +65,30 @@ public class Screen1 extends Fragment {
 
     public void processValue(String response){
         try{
-            ArrayList<String> provinces = null, realdate = null;
-            String provname = spn_pro.getSelectedItem().toString(), dates = "";
-            JSONObject obj1 = new JSONObject(response);
-            //tim danh sach tinh
-            provinces = getItem(obj1);
+            ArrayList<String> provinces = null;
+            final String provname = spn_pro.getSelectedItem().toString();
+            final JSONObject obj1 = new JSONObject(response);
             //tim danh sach ngay trong tinh
-            dates = getDate(provname);
-            final JSONObject objdate = obj1.getJSONObject(dates);
-            realdate = getItem(objdate);
-            //cho date vao spinner
-            for (int i = 0; i < realdate.size(); i++){
-                Log.d("date",realdate.get(i));
-                itemSpinner_date.add(realdate.get(i));
+            String dates = getrealPro(provname);
+            objdate = obj1.getJSONObject(dates);
+            ArrayList<String> realdate = getItem(objdate);
+            for (int run = 0; run < realdate.size(); run++){
+                Log.d("date",realdate.get(run));
+                itemSpinner_date.add(realdate.get(run));
             }
             ArrayAdapter<String> dateadap = new ArrayAdapter(getContext(), android.R.layout.simple_spinner_item, itemSpinner_date);
             spn_date.setAdapter(dateadap);
+            spn_pro.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                @Override
+                public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                    spinner_item_select(obj1);
+                }
+
+                @Override
+                public void onNothingSelected(AdapterView<?> adapterView) {
+
+                }
+            });
             //tac vu click cua button see
             this.btn_see.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -114,6 +106,28 @@ public class Screen1 extends Fragment {
                     txt_scr1_gdb.setText(pricelist.get(8).toString());
                 }
             });
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+    }
+
+    public void spinner_item_select(JSONObject obj1){
+        try{
+            //cho date vao spinner
+            //dau tien la xoa du lieu truoc
+            itemSpinner_date.clear();
+            spn_date.setAdapter(null);
+            String prname = spn_pro.getSelectedItem().toString();
+            String dates_2 = getrealPro(prname);
+            JSONObject objdate_2 = obj1.getJSONObject(dates_2);
+            objdate = objdate_2;
+            ArrayList<String> realdate_2 = getItem(objdate_2);
+            for (int run = 0; run < realdate_2.size(); run++){
+                Log.d("date",realdate_2.get(run));
+                itemSpinner_date.add(realdate_2.get(run));
+            }
+            ArrayAdapter<String> dateadap_2 = new ArrayAdapter(getContext(), android.R.layout.simple_spinner_item, itemSpinner_date);
+            spn_date.setAdapter(dateadap_2);
         }catch (Exception e){
             e.printStackTrace();
         }
@@ -137,7 +151,7 @@ public class Screen1 extends Fragment {
     }
 
     //return date[]
-    public String getDate(String provname){
+    public String getrealPro(String provname){
         String codeprov = "";
         //convert provname to provlist-item
         switch (provname){
@@ -160,7 +174,7 @@ public class Screen1 extends Fragment {
                 codeprov = "CM";
                 break;
             case "Cần Thơ":
-                codeprov = "CL";
+                codeprov = "CT";
                 break;
             case "Hồ Chí Minh":
                 codeprov = "HCM";
@@ -222,31 +236,6 @@ public class Screen1 extends Fragment {
         }
         return content.toString();
     }
-
-//    public void showDatePickerDialog()
-//    {
-//        final java.util.Calendar cal = java.util.Calendar.getInstance();
-//        DatePickerDialog.OnDateSetListener callback=new DatePickerDialog.OnDateSetListener() {
-//            public void onDateSet(DatePicker view, int year,
-//                                  int monthOfYear,
-//                                  int dayOfMonth) {
-//                txt_date1.setText((dayOfMonth) +"/"+(monthOfYear+1)+"/"+year);
-//                cal.set(year, monthOfYear, dayOfMonth);
-//            }
-//        };
-//        //các lệnh dưới này xử lý ngày giờ trong DatePickerDialog
-//        //sẽ giống với trên TextView khi mở nó lên
-//        String s=txt_date1.getText()+"";
-//        String strArrtmp[]=s.split("/");
-//        int ngay=Integer.parseInt(strArrtmp[0]);
-//        int thang=Integer.parseInt(strArrtmp[1])-1;
-//        int nam=Integer.parseInt(strArrtmp[2]);
-//        DatePickerDialog pic=new DatePickerDialog(
-//                super.getActivity(),
-//                callback, nam, thang, ngay);
-//        pic.setTitle("Chọn ngày hoàn thành");
-//        pic.show();
-//    }
 
     private void addControlls(View view){
         btn_see = (Button) view.findViewById(R.id.btn_scr1_see);
