@@ -8,6 +8,11 @@ import android.widget.Toast;
 
 import java.io.IOException;
 
+/**
+ * Author   : Vo Dang Phuc
+ * ID       : 51303080
+ * Email    : dennisphuc@gmail.com
+ * */
 public class SplashActivity extends AppCompatActivity {
 
     MediaPlayer mp;
@@ -42,7 +47,7 @@ public class SplashActivity extends AppCompatActivity {
                 };
                 timer.start();
             } else {
-                Toast.makeText(this,"Xin hãy kết nối internet để dùng ứng dụng",Toast.LENGTH_LONG).show();
+                Toast.makeText(this,"Xin hãy kết nối internet để dùng ứng dụng!",Toast.LENGTH_LONG).show();
             }
         }catch (Exception e){
             e.printStackTrace();

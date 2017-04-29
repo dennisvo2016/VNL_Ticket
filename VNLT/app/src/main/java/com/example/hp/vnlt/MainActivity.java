@@ -15,7 +15,11 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-
+/**
+ * Author   : Vo Dang Phuc
+ * ID       : 51303080
+ * Email    : dennisphuc@gmail.com
+ * */
 public class MainActivity extends AppCompatActivity {
 
     /**

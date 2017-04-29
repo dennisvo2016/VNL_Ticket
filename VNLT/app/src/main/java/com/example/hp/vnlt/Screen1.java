@@ -26,8 +26,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by Vo Dang Phuc on 4/29/2017.
- */
+ * Author   : Vo Dang Phuc
+ * ID       : 51303080
+ * Email    : dennisphuc@gmail.com
+ * */
 
 public class Screen1 extends Fragment {
 
@@ -65,7 +67,6 @@ public class Screen1 extends Fragment {
 
     public void processValue(String response){
         try{
-            ArrayList<String> provinces = null;
             final String provname = spn_pro.getSelectedItem().toString();
             final JSONObject obj1 = new JSONObject(response);
             //tim danh sach ngay trong tinh
@@ -185,7 +186,39 @@ public class Screen1 extends Fragment {
         return codeprov;
     }
 
-
+    public String getvirPro(String provname){
+        String codeprov = "";
+        //convert provname to provlist-item
+        switch (provname){
+            case "AG":
+                codeprov = "An Giang";
+                break;
+            case "BD":
+                codeprov = "Bình Dương";
+                break;
+            case "BL":
+                codeprov = "Bạc Liêu";
+                break;
+            case "BP":
+                codeprov = "Bình Phước";
+                break;
+            case "BTH":
+                codeprov = "Bình Thuận";
+                break;
+            case "CM":
+                codeprov = "Cà Mau";
+                break;
+            case "CT":
+                codeprov = "Cần Thơ";
+                break;
+            case "HCM":
+                codeprov = "Hồ Chí Minh";
+                break;
+            default:
+                break;
+        }
+        return codeprov;
+    }
 
     public ArrayList<String> getItem(JSONObject object){
         try {

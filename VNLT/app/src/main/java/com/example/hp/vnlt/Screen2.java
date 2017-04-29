@@ -27,8 +27,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by HP on 4/29/2017.
- */
+ * Author   : Vo Dang Phuc
+ * ID       : 51303080
+ * Email    : dennisphuc@gmail.com
+ * */
 
 public class Screen2 extends Fragment {
 
