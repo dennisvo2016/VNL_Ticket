@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:weightSum="1">
+
+
+    <TextView
+        android:text="Giải 1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/btn_scr1_see"
+        android:layout_alignStart="@+id/spn_scr1_province"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="15dp"
+        android:textSize="15dp"
+        android:id="@+id/textView3" />
+
+    <TextView
+        android:text="Giải 2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView4"
+        android:layout_below="@+id/textView3"
+        android:layout_alignStart="@+id/textView3"
+        android:textSize="15dp"
+        android:layout_marginTop="13dp" />
+
+    <TextView
+        android:text="Giải 4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView6"
+        android:textSize="15dp"
+        android:layout_marginTop="14dp"
+        android:layout_below="@+id/textView5"
+        android:layout_alignStart="@+id/textView5" />
+
+    <TextView
+        android:text="Giải 5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView7"
+        android:textSize="15dp"
+        android:layout_marginTop="14dp"
+        android:layout_below="@+id/textView6"
+        android:layout_alignStart="@+id/textView6" />
+
+    <TextView
+        android:text="Giải 6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView8"
+        android:textSize="15dp"
+        android:layout_marginTop="14dp"
+        android:layout_below="@+id/textView7"
+        android:layout_alignStart="@+id/textView7" />
+
+    <TextView
+        android:text="Giải 7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView9"
+        android:textSize="15dp"
+        android:layout_marginTop="14dp"
+        android:layout_below="@+id/textView8"
+        android:layout_alignStart="@+id/textView8" />
+
+    <TextView
+        android:text="Giải 8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView10"
+        android:textSize="15dp"
+        android:layout_marginTop="13dp"
+        android:layout_below="@+id/textView9"
+        android:layout_alignStart="@+id/textView9" />
+
+    <TextView
+        android:text="Giải ĐB"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView11"
+        android:textSize="15dp"
+        android:layout_marginTop="16dp"
+        android:layout_below="@+id/textView10"
+        android:layout_alignStart="@+id/textView10" />
+
+    <TextView
+        android:text="000000"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/textView3"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/txt_scr1_g1" />
+
+    <TextView
+        android:text="000000"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/txt_scr1_g2"
+        android:layout_alignTop="@+id/textView4"
+        android:layout_alignStart="@+id/txt_scr1_g1" />
+
+    <TextView
+        android:text="000000"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView20"
+        android:layout_alignTop="@+id/textView11"
+        android:layout_alignStart="@+id/txt_scr1_g8" />
+
+    <TextView
+        android:text="000000"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/txt_scr1_g8"
+        android:layout_alignTop="@+id/textView10"
+        android:layout_alignStart="@+id/txt_scr1_g7" />
+
+    <TextView
+        android:text="000000"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/txt_scr1_g7"
+        android:layout_alignTop="@+id/textView9"
+        android:layout_alignStart="@+id/txt_scr1_g6" />
+
+    <TextView
+        android:text="000000"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/txt_scr1_g6"
+        android:layout_alignTop="@+id/textView8"
+        android:layout_alignStart="@+id/txt_scr1_g5" />
+
+    <TextView
+        android:text="000000"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/txt_scr1_g5"
+        android:layout_alignTop="@+id/textView7"
+        android:layout_alignStart="@+id/txt_scr1_g4" />
+
+    <TextView
+        android:text="000000"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/txt_scr1_g4"
+        android:layout_marginTop="44dp"
+        android:layout_below="@+id/textView4"
+        android:layout_alignStart="@+id/txt_scr1_g2" />
+
+    <TextView
+        android:text="000000"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/txt_scr1_g3"
+        android:layout_below="@+id/textView4"
+        android:layout_alignStart="@+id/txt_scr1_g2"
+        android:layout_marginTop="10dp" />
+
+    <TextView
+        android:text="Giải 3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView5"
+        android:textSize="15dp"
+        android:layout_alignTop="@+id/txt_scr1_g3"
+        android:layout_alignStart="@+id/textView4" />
+
+    <TextView
+        android:text="20/05/2017"
+        android:id="@+id/txt_scr1_date"
+        android:layout_height="35dp"
+        android:textAlignment="center"
+        android:layout_marginRight="15dp"
+        android:padding="0px"
+        android:layout_width="150dp"
+        android:layout_alignBottom="@+id/spn_scr1_province"
+        android:layout_toEndOf="@+id/spn_scr1_province"
+        android:textSize="25dp" />
+
+    <Button
+        android:text="XEM XỔ SỐ"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/btn_scr1_see"
+        android:layout_alignBottom="@+id/btn_scr1_date"
+        android:layout_toEndOf="@+id/textView11"
+        android:layout_marginStart="17dp" />
+
+    <Button
+        android:text="Chọn ngày"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:id="@+id/btn_scr1_date"
+        android:layout_marginTop="16dp"
+        android:layout_below="@+id/txt_scr1_date"
+        android:layout_toEndOf="@+id/txt_scr1_g1" />
+
+    <Spinner
+        android:id="@+id/spn_scr1_province"
+        android:layout_height="50dp"
+        android:layout_width="200dp"
+        android:layout_marginTop="10dp"
+        android:layout_alignParentTop="true"
+        android:layout_toStartOf="@+id/btn_scr1_date" />
+
+</RelativeLayout>
